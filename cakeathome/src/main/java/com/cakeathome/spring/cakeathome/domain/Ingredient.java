@@ -64,6 +64,10 @@ public class Ingredient   {
 		this.nomIngredients = nomIngredients;
 		Quantite = quantite;
 	}
+
+	public Ingredient() {
+		super();
+	}
 	
 	
 

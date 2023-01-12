@@ -85,6 +85,9 @@ public class Commentaire  {
 		NoteCommentaire = noteCommentaire;
 		this.dateCommentaire = dateCommentaire;
 	}
+	public Commentaire() {
+		super();
+	}
 	
 	
 }

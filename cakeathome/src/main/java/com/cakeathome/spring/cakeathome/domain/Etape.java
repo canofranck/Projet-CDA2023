@@ -52,6 +52,9 @@ public class Etape  {
 		this.instructions = instructions;
 		ImageEtape = imageEtape;
 	}
+	public Etape() {
+		super();
+	}
 	
 	
 }

@@ -166,5 +166,9 @@ public class Recette  {
 		RecettePremium = recettePremium;
 	}
 
+	public Recette() {
+		super();
+	}
+
 	
 }

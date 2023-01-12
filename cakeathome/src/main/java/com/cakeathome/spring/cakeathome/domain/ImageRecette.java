@@ -52,5 +52,9 @@ public class ImageRecette  {
 		this.imageEtape = imageEtape;
 	}
 
+	public ImageRecette() {
+		super();
+	}
+
 	
 }
