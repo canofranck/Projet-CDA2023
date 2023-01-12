@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cakeathome.spring.cakeathome.domain.Abonnement;
-import com.cakeathome.spring.cakeathome.domain.Utilisateur;
+
 import com.cakeathome.spring.cakeathome.repository.IAbonnementRepository;
-import com.cakeathome.spring.cakeathome.repository.IUtilisateurRepository;
+
 
 @Service
 public class AbonnementDao {
@@ -23,24 +23,24 @@ public class AbonnementDao {
 		
 		
 		// create un abonnements
-		public Abonnement saveAbonnement(Utilisateur abonnementUtilisateur) {
-			return abonnementRepository.save(Abonnement);
+		public Abonnement saveAbonnement(Abonnement abonnementUtilisateur) {
+			return abonnementRepository.save(abonnementUtilisateur);
 		}
 
 		// recupere un abonnements par ID 
-		public Utilisateur getUtilisateurByID(Long IdUtilisateur) {
-			return utilisateurRepository.findById(IdUtilisateur).get();
+		public Abonnement getAbonnementByIdAbonnement(Long IdAbonnement) {
+			return abonnementRepository.findById(IdAbonnement).get();
 		}
 		// Delete un abonnements
 		
-		public void deleteUtilisateur(Utilisateur utilisateur) {
-			utilisateurRepository.delete(utilisateur);
+		public void deleteAbonnement(Abonnement abonnement) {
+			abonnementRepository.delete(abonnement);
 		}
 
 		// modifier un abonnement
 		
-		public Utilisateur updateUtilisateur(Utilisateur utilisateur) {
-			return utilisateurRepository.save(utilisateur);
+		public Abonnement updateAbonnement(Abonnement abonnement) {
+			return abonnementRepository.save(abonnement);
 			
 		}
 	}

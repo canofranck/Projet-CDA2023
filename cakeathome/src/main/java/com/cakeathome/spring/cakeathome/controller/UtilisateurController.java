@@ -27,11 +27,11 @@ public class UtilisateurController {
 	UtilisateurDao utilisateurDao;
 	
 	@GetMapping("/utilisateur")
-	public List<Utilisateur> getAlluUtilisateurs(@Validated @RequestBody(required = false) Utilisateur utilisateur) {
+	public List<Utilisateur> getAllUtilisateurs(@Validated @RequestBody(required = false) Utilisateur utilisateur) {
 		return utilisateurDao.getUtilisateurs();		
 }
 	@PostMapping("/utilisateur")
-	public Utilisateur creaUtilisateurs(@Validated @RequestBody(required = false) Utilisateur utilisateur) {
+	public Utilisateur createUtilisateurs(@Validated @RequestBody(required = false) Utilisateur utilisateur) {
 		return utilisateurDao.saveUtilisateur(utilisateur);
 	
 }
