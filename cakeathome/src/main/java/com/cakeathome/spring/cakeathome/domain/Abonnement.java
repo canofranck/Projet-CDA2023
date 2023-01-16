@@ -1,88 +1,114 @@
 package com.cakeathome.spring.cakeathome.domain;
 
 
+
+import java.io.Serializable;
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 @Entity 
 @Table(name="ABONNEMENT")
-public class Abonnement {
+public class Abonnement implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDABONNEMENT")
-	private long IdAbonnement;
-	
-	@Column(name = "IDUTILISATEUR")
-	private long IdUtilisateur;
-	
+	@Column(name = "ID_ABONNEMENT")
+	private long id_abonnement;
+	/*
+	 * @Column(name = "IDABONNEMENT_UTILISATEUR") private long
+	 * IdAbonnemment_Utilisateur;
+	 */
 	@Column(name = "ABONNEMENTPRIS")
-	private boolean AbonnementPris;
+	private boolean abonnementpris;
 	
 	@Column(name = "ABONNEMENTDATEDEBUT")
-	private Date AbonnementDateDebut;
+	private Date abonnementdatedebut;
 	
 	@Column(name = "ABONNEMENTDUREE")
-	private int AbonnementDuree;
+	private int abonnementduree;
 
-	public long getIdAbonnement() {
-		return IdAbonnement;
+	//ASSOCIATION
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_utilisateur")
+	private Utilisateur utilisateur;
+
+	public long getId_abonnement() {
+		return id_abonnement;
 	}
 
-	public void setIdAbonnement(long idAbonnement) {
-		IdAbonnement = idAbonnement;
+	public void setId_abonnement(long id_abonnement) {
+		this.id_abonnement = id_abonnement;
 	}
 
-	public long getIdUtilisateur() {
-		return IdUtilisateur;
+	public boolean isAbonnementpris() {
+		return abonnementpris;
 	}
 
-	public void setIdUtilisateur(long idUtilisateur) {
-		IdUtilisateur = idUtilisateur;
+	public void setAbonnementpris(boolean abonnementpris) {
+		this.abonnementpris = abonnementpris;
 	}
 
-	public boolean isAbonnementPris() {
-		return AbonnementPris;
+	public Date getAbonnementdatedebut() {
+		return abonnementdatedebut;
 	}
 
-	public void setAbonnementPris(boolean abonnementPris) {
-		AbonnementPris = abonnementPris;
+	public void setAbonnementdatedebut(Date abonnementdatedebut) {
+		this.abonnementdatedebut = abonnementdatedebut;
 	}
 
-	public Date getAbonnementDateDebut() {
-		return AbonnementDateDebut;
+	public int getAbonnementduree() {
+		return abonnementduree;
 	}
 
-	public void setAbonnementDateDebut(Date abonnementDateDebut) {
-		AbonnementDateDebut = abonnementDateDebut;
+	public void setAbonnementduree(int abonnementduree) {
+		this.abonnementduree = abonnementduree;
 	}
 
-	public int getAbonnementDuree() {
-		return AbonnementDuree;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	public void setAbonnementDuree(int abonnementDuree) {
-		AbonnementDuree = abonnementDuree;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
-	public Abonnement(long idAbonnement, long idUtilisateur, boolean abonnementPris, Date abonnementDateDebut,
-			int abonnementDuree) {
+	public Abonnement(long id_abonnement, boolean abonnementpris, Date abonnementdatedebut, int abonnementduree,
+			Utilisateur utilisateur) {
 		super();
-		IdAbonnement = idAbonnement;
-		IdUtilisateur = idUtilisateur;
-		AbonnementPris = abonnementPris;
-		AbonnementDateDebut = abonnementDateDebut;
-		AbonnementDuree = abonnementDuree;
+		this.id_abonnement = id_abonnement;
+		this.abonnementpris = abonnementpris;
+		this.abonnementdatedebut = abonnementdatedebut;
+		this.abonnementduree = abonnementduree;
+		this.utilisateur = utilisateur;
 	}
 
 	public Abonnement() {
 		super();
 	}
+
+
+	
+	// GETTER
+	
+	
+	
+	
+	// CONSTRUCTOR
+	
+	
+	
+	
+	
+	
 	
 	
 

@@ -6,15 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cakeathome.spring.cakeathome.dao.CommentaireDao;
-
+import com.cakeathome.spring.cakeathome.domain.Abonnement;
 import com.cakeathome.spring.cakeathome.domain.Commentaire;
 
 
@@ -35,12 +37,12 @@ public class CommentaireController {
 	
 }
 	@GetMapping("/commentaire/{IdCommentaire}")
-	public ResponseEntity findcommentaireById(@PathVariable(name = "IdCommentaire")Long idcommentaire){
-		if (idcommentaire == null) {
+	public ResponseEntity findcommentaireById(@PathVariable(name = "IdCommentaire")Long id_commentaire){
+		if (id_commentaire== null) {
 			return ResponseEntity.badRequest().body("Je ne trouve pas le fournisseur avec son ID");
 		}
 		
-		Commentaire commentaire= commentaireDao.getCommentaireByID(idcommentaire);
+		Commentaire commentaire= commentaireDao.getCommentaireByID(id_commentaire);
 		
 		if (commentaire == null) {
 			return ResponseEntity.notFound().build();
@@ -49,5 +51,28 @@ public class CommentaireController {
 		return ResponseEntity.ok().body(commentaire); 
 		
 	}
+	@PutMapping("/commentaires/{id_commentaire}")
+	public ResponseEntity<Commentaire> updateCommentaire (@Validated @PathVariable(name = "id_commentaire")Long id_commentaire, @RequestBody(required = false) Commentaire commentaire) {
+		if (commentaire == null) {
+			return ResponseEntity.notFound().build();
+			
+		}
+		commentaire.setId_commentaire(id_commentaire);
+		commentaireDao.updateCommentaire(commentaire);
+		return ResponseEntity.ok().body(commentaire);
+	}
 	
+	@DeleteMapping("/commentaires/{id_commentaire}")
+	public ResponseEntity<Commentaire> deleteCommentaire (@Validated @PathVariable(name = "id_commentaire")Long id_commentaire) {
+		
+		Commentaire commentaire = commentaireDao.getCommentaireByID(id_commentaire) ;
+		
+		if (commentaire == null) {
+			return ResponseEntity.notFound().build();
+		
+	}
+		commentaireDao.deleteCommentaire(commentaire);
+		return ResponseEntity.ok().body(commentaire); 
+	
+	}
 }

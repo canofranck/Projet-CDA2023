@@ -1,60 +1,79 @@
 package com.cakeathome.spring.cakeathome.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity 
-@Table(name="IMAGERECETTE")
+@Table(name="IMAGE_RECETTE")
 public class ImageRecette  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDIMAGEETAPE")
-	private long IdImageEtape;
 	
-	@Column(name = "IDRECETTE")
-	private long IdRecette;
+	@Column(name = "ID_IMAGE_RECETTE")
+	private long id_image_recette;
 	
-	@Column(name = "IMAGEETAPE")
-	private String imageEtape;
+	@Column(name = "IMAGERECETTE")
+	private String imagerecette;
 
-	public long getIdImageEtape() {
-		return IdImageEtape;
-	}
+	// ASSOCIATION
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "id_recette")
+	
+	private Recette recette;
 
-	public void setIdImageEtape(long idImageEtape) {
-		IdImageEtape = idImageEtape;
-	}
-
-	public long getIdRecette() {
-		return IdRecette;
-	}
-
-	public void setIdRecette(long idRecette) {
-		IdRecette = idRecette;
-	}
-
-	public String getImageEtape() {
-		return imageEtape;
-	}
-
-	public void setImageEtape(String imageEtape) {
-		this.imageEtape = imageEtape;
-	}
-
-	public ImageRecette(long idImageEtape, long idRecette, String imageEtape) {
-		super();
-		IdImageEtape = idImageEtape;
-		IdRecette = idRecette;
-		this.imageEtape = imageEtape;
-	}
+	// GETTER
+	
+	
 
 	public ImageRecette() {
 		super();
 	}
 
+	public long getId_image_recette() {
+		return id_image_recette;
+	}
+
+	public void setId_image_recette(long id_image_recette) {
+		this.id_image_recette = id_image_recette;
+	}
+
+	public String getImagerecette() {
+		return imagerecette;
+	}
+
+	public void setImagerecette(String imagerecette) {
+		this.imagerecette = imagerecette;
+	}
+
+	public Recette getRecette() {
+		return recette;
+	}
+
+	public void setRecette(Recette recette) {
+		this.recette = recette;
+	}
+
+	public ImageRecette(long id_image_recette, String imagerecette, Recette recette) {
+		super();
+		this.id_image_recette = id_image_recette;
+		this.imagerecette = imagerecette;
+		this.recette = recette;
+	}
+
+	
+	
+	
+	
+	
+	
+	
 	
 }

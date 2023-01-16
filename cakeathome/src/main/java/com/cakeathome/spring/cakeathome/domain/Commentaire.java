@@ -1,93 +1,151 @@
 package com.cakeathome.spring.cakeathome.domain;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity 
 @Table(name="COMMENTAIRE")
 
-public class Commentaire  {
+public class Commentaire implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDCOMMENTAIRE")
-	private long IdCommentaire;
-	@Column(name = "IDUTILISATEURCOMMENTAIRE")
-	private long IdUtilisateurCommentaire;
-	@Column(name = "IDRECETTECOMMENTAIRE")
-	private long IdRecetteCommentaire;
+	
+	@Column(name = "ID_COMMENTAIRE")
+	private long id_commentaire;
+	
 	@Column(name = "COMMENTAIRE")
-	private String Commentaire;
+	private String commentaire;
+	
 	@Column(name = "IMAGECOMMENTAIRE")
-	private String imageCommentaire;
+	private String imagecommentaire;
+	
 	@Column(name = "NOTECOMMENTAIRE")
-	private int NoteCommentaire;
+	private int notecommentaire;
+	
 	@Column(name = "DATECOMMENTAIRE")
-	private Date dateCommentaire;
+	private Date datecommentaire;
+	
+	// ASSOCIATION
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "id_utilisateur")
+	private Utilisateur utilisateur;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "id_recette")
+	private Recette recette;
+
+	
+	//GETTER
 	
 	
-	public long getIdCommentaire() {
-		return IdCommentaire;
-	}
-	public void setIdCommentaire(long idCommentaire) {
-		IdCommentaire = idCommentaire;
-	}
-	public long getIdUtilisateurCommentaire() {
-		return IdUtilisateurCommentaire;
-	}
-	public void setIdUtilisateurCommentaire(long idUtilisateurCommentaire) {
-		IdUtilisateurCommentaire = idUtilisateurCommentaire;
-	}
-	public long getIdRecetteCommentaire() {
-		return IdRecetteCommentaire;
-	}
-	public void setIdRecetteCommentaire(long idRecetteCommentaire) {
-		IdRecetteCommentaire = idRecetteCommentaire;
-	}
-	public String getCommentaire() {
-		return Commentaire;
-	}
-	public void setCommentaire(String commentaire) {
-		Commentaire = commentaire;
-	}
-	public String getImageCommentaire() {
-		return imageCommentaire;
-	}
-	public void setImageCommentaire(String imageCommentaire) {
-		this.imageCommentaire = imageCommentaire;
-	}
-	public int getNoteCommentaire() {
-		return NoteCommentaire;
-	}
-	public void setNoteCommentaire(int noteCommentaire) {
-		NoteCommentaire = noteCommentaire;
-	}
-	public Date getDateCommentaire() {
-		return dateCommentaire;
-	}
-	public void setDateCommentaire(Date dateCommentaire) {
-		this.dateCommentaire = dateCommentaire;
-	}
-	public Commentaire(long idCommentaire, long idUtilisateurCommentaire, long idRecetteCommentaire, String commentaire,
-			String imageCommentaire, int noteCommentaire, Date dateCommentaire) {
-		super();
-		IdCommentaire = idCommentaire;
-		IdUtilisateurCommentaire = idUtilisateurCommentaire;
-		IdRecetteCommentaire = idRecetteCommentaire;
-		Commentaire = commentaire;
-		this.imageCommentaire = imageCommentaire;
-		NoteCommentaire = noteCommentaire;
-		this.dateCommentaire = dateCommentaire;
-	}
 	public Commentaire() {
 		super();
 	}
+
+
+	public Commentaire(long id_commentaire, String commentaire, String imagecommentaire, int notecommentaire,
+			Date datecommentaire, Utilisateur utilisateur, Recette recette) {
+		super();
+		this.id_commentaire = id_commentaire;
+		this.commentaire = commentaire;
+		this.imagecommentaire = imagecommentaire;
+		this.notecommentaire = notecommentaire;
+		this.datecommentaire = datecommentaire;
+		this.utilisateur = utilisateur;
+		this.recette = recette;
+	}
+
+
+	public long getId_commentaire() {
+		return id_commentaire;
+	}
+
+
+	public void setId_commentaire(long id_commentaire) {
+		this.id_commentaire = id_commentaire;
+	}
+
+
+	public String getCommentaire() {
+		return commentaire;
+	}
+
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
+
+
+	public String getImagecommentaire() {
+		return imagecommentaire;
+	}
+
+
+	public void setImagecommentaire(String imagecommentaire) {
+		this.imagecommentaire = imagecommentaire;
+	}
+
+
+	public int getNotecommentaire() {
+		return notecommentaire;
+	}
+
+
+	public void setNotecommentaire(int notecommentaire) {
+		this.notecommentaire = notecommentaire;
+	}
+
+
+	public Date getDatecommentaire() {
+		return datecommentaire;
+	}
+
+
+	public void setDatecommentaire(Date datecommentaire) {
+		this.datecommentaire = datecommentaire;
+	}
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+	public Recette getRecette() {
+		return recette;
+	}
+
+
+	public void setRecette(Recette recette) {
+		this.recette = recette;
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

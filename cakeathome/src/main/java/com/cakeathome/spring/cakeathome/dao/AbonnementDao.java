@@ -15,7 +15,7 @@ public class AbonnementDao {
 	@Autowired
 	IAbonnementRepository abonnementRepository;
 	
-	// Liste abonnemnts
+	// Liste abonnements
 
 		public List<Abonnement> getAbonnements() {
 			return abonnementRepository.findAll();
@@ -23,12 +23,12 @@ public class AbonnementDao {
 		
 		
 		// create un abonnements
-		public Abonnement saveAbonnement(Abonnement abonnementUtilisateur) {
-			return abonnementRepository.save(abonnementUtilisateur);
+		public Abonnement saveAbonnement(Abonnement abonnement) {
+			return abonnementRepository.save(abonnement);
 		}
 
 		// recupere un abonnements par ID 
-		public Abonnement getAbonnementByIdAbonnement(Long IdAbonnement) {
+		public Abonnement getAbonnementById(Long IdAbonnement) {
 			return abonnementRepository.findById(IdAbonnement).get();
 		}
 		// Delete un abonnements
