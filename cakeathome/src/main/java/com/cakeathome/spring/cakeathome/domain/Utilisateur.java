@@ -15,12 +15,6 @@ public class Utilisateur  {
 	@Column(name = "ID_UTILISATEUR")
 	private Long id_utilisateur;
 	
-	/*
-	 * @Column(name = "IDUTILISATEUR_ABONNEMENT") private long
-	 * IdUtilisateur_Abonnement;
-	 * 
-	 * @Column(name = "IDUTILISEUR_RECETTE") private Long IdUtilisateur_Recette;
-	 */
 	
 	@Column(name = "PSEUDO_UTILISATEUR")
 	private String pseudo_utilisateur;
@@ -28,7 +22,8 @@ public class Utilisateur  {
 	@Column(name = "PASSWORD_UTILISATEUR")
 	private String password_utilisateur;
 	
-	private String Genre;
+	@Column(name = "GENRE_UTILISATEUR")
+	private String genre;
 	
 	@Column(name = "EMAIL_UTILISATEUR")
 	private String email_utilisateur;
@@ -75,13 +70,15 @@ public class Utilisateur  {
 	}
 
 
+	
+
 	public String getGenre() {
-		return Genre;
+		return genre;
 	}
 
 
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.genre = genre;
 	}
 
 
@@ -129,6 +126,7 @@ public class Utilisateur  {
 		super();
 	}
 
+
 	public Utilisateur(Long id_utilisateur, String pseudo_utilisateur, String password_utilisateur, String genre,
 			String email_utilisateur, String dateInscription_utilisateur, String ville_utilisateur,
 			String mesfavoris_utilisateur) {
@@ -136,12 +134,14 @@ public class Utilisateur  {
 		this.id_utilisateur = id_utilisateur;
 		this.pseudo_utilisateur = pseudo_utilisateur;
 		this.password_utilisateur = password_utilisateur;
-		Genre = genre;
+		this.genre = genre;
 		this.email_utilisateur = email_utilisateur;
 		this.dateInscription_utilisateur = dateInscription_utilisateur;
 		this.ville_utilisateur = ville_utilisateur;
 		this.mesfavoris_utilisateur = mesfavoris_utilisateur;
 	}
+
+	
 
 
 	

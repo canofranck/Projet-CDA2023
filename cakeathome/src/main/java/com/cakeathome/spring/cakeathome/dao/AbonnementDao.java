@@ -28,8 +28,8 @@ public class AbonnementDao {
 		}
 
 		// recupere un abonnements par ID 
-		public Abonnement getAbonnementById(Long IdAbonnement) {
-			return abonnementRepository.findById(IdAbonnement).get();
+		public Abonnement getAbonnementById(Long id_bonnement) {
+			return abonnementRepository.findById(id_bonnement).get();
 		}
 		// Delete un abonnements
 		

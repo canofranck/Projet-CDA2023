@@ -41,10 +41,8 @@ public class Ingredient   {
 	@JoinColumn(name = "id_recette")
 	private Recette recette;
 
-	/*
-	 * @ManyToMany(cascade = CascadeType.ALL, mappedBy = "recette") private
-	 * List<Recette> recettes = new ArrayList<>();
-	 */
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "ingredients")
+	private List<Recette> recettes = new ArrayList<>();
 	
 	
 	// GETTER

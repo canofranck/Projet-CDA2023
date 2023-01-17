@@ -76,13 +76,10 @@ public class Recette  implements Serializable{
 	@JoinColumn(name = "auteur", nullable=false, referencedColumnName = "id_utilisateur")
 	private Utilisateur utilisateur;
 	
-	/*
-	 * @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	 * 
-	 * @JoinTable(name = "recette_ingredient", joinColumns = @JoinColumn(name =
-	 * "Idrecette"), inverseJoinColumns = @JoinColumn(name = "IdIngredient"))
-	 * private List<Ingredient> ingredients;
-	 */
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+		@JoinTable(name = "recette_ingrdient", joinColumns = @JoinColumn(name = "id_recette"), inverseJoinColumns = @JoinColumn(name = "id_ingredient"))
+		private List<Ingredient> ingredients;
 	
 
 
