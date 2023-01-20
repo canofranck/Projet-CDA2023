@@ -1,5 +1,6 @@
 package com.cakeathome.spring.cakeathome.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,8 @@ import jakarta.persistence.Table;
 
 @Entity 
 @Table(name="INGREDIENT")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_recette")
-public class Ingredient   {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_ingredient")
+public class Ingredient  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
@@ -36,13 +37,15 @@ public class Ingredient   {
 
 	
 	// ASSOCIATION
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_recette")
-	private Recette recette;
+	/*
+	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "id_recette") private Recette recette;
+	 */
 
+	
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "ingredients")
-	private List<Recette> recettes = new ArrayList<>();
+	private List<Recette> recettes= new ArrayList<>();
 	
 	
 	// GETTER
@@ -77,22 +80,26 @@ public class Ingredient   {
 		this.quantite = quantite;
 	}
 
-	public Recette getRecette() {
-		return recette;
+	
+	
+	public List<Recette> getRecettes() {
+		return recettes;
 	}
 
-	public void setRecette(Recette recette) {
-		this.recette = recette;
+	public void setRecettes(List<Recette> recettes) {
+		this.recettes = recettes;
 	}
 
-	public Ingredient(Long id_ingredient, String nomingredients, int quantite, Recette recette) {
+	public Ingredient(Long id_ingredient, String nomingredients, int quantite, List<Recette> recettes) {
 		super();
 		this.id_ingredient = id_ingredient;
 		this.nomingredients = nomingredients;
 		this.quantite = quantite;
-		this.recette = recette;
+		this.recettes = recettes;
 	}
 
+	
+	
 	
 	
 	

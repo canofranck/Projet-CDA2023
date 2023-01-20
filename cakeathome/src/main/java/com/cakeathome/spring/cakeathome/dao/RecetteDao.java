@@ -27,8 +27,8 @@ public class RecetteDao {
 	}
 
 	// recupere une Recette par ID 
-	public  Recette getRecetteByID(Long Idrecette) {
-		return recetteRepository.findById(Idrecette).get();
+	public  Recette getRecetteByID(Long id_recette) {
+		return recetteRepository.findById(id_recette).get();
 	}
 	// Delete une Recette
 	

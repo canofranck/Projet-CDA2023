@@ -26,8 +26,8 @@ public class EtapeDao {
 	}
 
 	// recupere une etape par ID 
-	public Etape getEtapeByID(Long IdEtape) {
-		return etapeRepository.findById(IdEtape).get();
+	public Etape getEtapeByID(Long id_etape) {
+		return etapeRepository.findById(id_etape).get();
 	}
 	// Delete une Etape
 	

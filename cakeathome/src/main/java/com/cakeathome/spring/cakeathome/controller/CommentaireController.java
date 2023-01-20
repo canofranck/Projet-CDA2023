@@ -36,7 +36,7 @@ public class CommentaireController {
 		return commentaireDao.saveCommentaire(commentaire);
 	
 }
-	@GetMapping("/commentaire/{IdCommentaire}")
+	@GetMapping("/commentaire/{id_commentaire}")
 	public ResponseEntity findcommentaireById(@PathVariable(name = "IdCommentaire")Long id_commentaire){
 		if (id_commentaire== null) {
 			return ResponseEntity.badRequest().body("Je ne trouve pas le fournisseur avec son ID");

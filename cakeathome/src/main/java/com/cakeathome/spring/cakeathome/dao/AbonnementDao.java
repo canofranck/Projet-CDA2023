@@ -23,13 +23,15 @@ public class AbonnementDao {
 		
 		
 		// create un abonnements
+		
 		public Abonnement saveAbonnement(Abonnement abonnement) {
 			return abonnementRepository.save(abonnement);
 		}
 
 		// recupere un abonnements par ID 
-		public Abonnement getAbonnementById(Long id_bonnement) {
-			return abonnementRepository.findById(id_bonnement).get();
+		
+		public Abonnement getAbonnementByID(Long id_abonnement) {
+			return abonnementRepository.findById(id_abonnement).get();
 		}
 		// Delete un abonnements
 		

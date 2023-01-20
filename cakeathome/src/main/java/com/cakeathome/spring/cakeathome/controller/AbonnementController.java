@@ -42,7 +42,7 @@ public class AbonnementController {
 			return ResponseEntity.badRequest().body("Je ne trouve pas le fournisseur avec son ID");
 		}
 		
-		Abonnement abonnement = abonnementDao.getAbonnementById(id_abonnement);
+		Abonnement abonnement = abonnementDao.getAbonnementByID(id_abonnement);
 		
 		if (abonnement == null) {
 			return ResponseEntity.notFound().build();
@@ -66,7 +66,7 @@ public class AbonnementController {
 	@DeleteMapping("/abonnements/{id_abonnement}")
 	public ResponseEntity<Abonnement> deleteAbonnement (@Validated @PathVariable(name = "id_abonnement")Long id_abonnement) {
 		
-		Abonnement abonnement = abonnementDao.getAbonnementById(id_abonnement) ;
+		Abonnement abonnement = abonnementDao.getAbonnementByID(id_abonnement) ;
 		
 		if (abonnement == null) {
 			return ResponseEntity.notFound().build();

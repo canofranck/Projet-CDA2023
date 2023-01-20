@@ -28,8 +28,8 @@ public class UtilisateurDao {
 	}
 
 	// recupere un utilisateur par ID 
-	public Utilisateur getUtilisateurByID(Long IdUtilisateur) {
-		return utilisateurRepository.findById(IdUtilisateur).get();
+	public Utilisateur getUtilisateurByID(Long id_utilisateur) {
+		return utilisateurRepository.findById(id_utilisateur).get();
 	}
 	// Delete un Utilisateur
 	

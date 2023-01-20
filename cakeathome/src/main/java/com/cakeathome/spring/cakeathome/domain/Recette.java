@@ -2,6 +2,7 @@ package com.cakeathome.spring.cakeathome.domain;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -78,8 +79,8 @@ public class Recette  implements Serializable{
 	
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-		@JoinTable(name = "recette_ingrdient", joinColumns = @JoinColumn(name = "id_recette"), inverseJoinColumns = @JoinColumn(name = "id_ingredient"))
-		private List<Ingredient> ingredients;
+		@JoinTable(name = "recette_ingredient", joinColumns = @JoinColumn(name = "id_recette"), inverseJoinColumns = @JoinColumn(name = "id_ingredient"))
+		private List<Ingredient> ingredients= new ArrayList<>();
 	
 
 
@@ -88,10 +89,11 @@ public class Recette  implements Serializable{
 		super();
 	}
 
+	
 	public Recette(Long id_recette, String titre_recette, Date date_recette, String description_recette,
 			String categorie_recette, String niveaudifficulte_recette, String tempspreparation_recette,
 			String tempscuisson_recette, String tempstotal_recette, String nbpersonne_recette,
-			boolean recettepremium_recette, Utilisateur utilisateur) {
+			boolean recettepremium_recette, Utilisateur utilisateur, List<Ingredient> ingredients) {
 		super();
 		this.id_recette = id_recette;
 		this.titre_recette = titre_recette;
@@ -105,7 +107,9 @@ public class Recette  implements Serializable{
 		this.nbpersonne_recette = nbpersonne_recette;
 		this.recettepremium_recette = recettepremium_recette;
 		this.utilisateur = utilisateur;
+		this.ingredients = ingredients;
 	}
+
 
 	public Long getId_recette() {
 		return id_recette;
@@ -177,6 +181,14 @@ public class Recette  implements Serializable{
 
 	public void setTempstotal_recette(String tempstotal_recette) {
 		this.tempstotal_recette = tempstotal_recette;
+	}
+
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 
 	public String getNbpersonne_recette() {

@@ -27,8 +27,8 @@ public class IngredientDao {
 	}
 
 	// recupere un  ingredient par ID 
-	public Ingredient getIngredientByID(Long  IdIngredient) {
-		return ingredientRepository.findById( IdIngredient).get();
+	public Ingredient getIngredientByID(Long  id_ingredient) {
+		return ingredientRepository.findById( id_ingredient).get();
 	}
 	// Delete un  ingredient
 	

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cakeathome.spring.cakeathome.dao.IngredientDao;
-import com.cakeathome.spring.cakeathome.domain.Abonnement;
+
 import com.cakeathome.spring.cakeathome.domain.Ingredient;
 
 

@@ -27,8 +27,8 @@ public class ImageRecetteDao {
 	}
 
 	// recupere une image par ID 
-	public ImageRecette getImageRecetteByID(Long IdImageEtape) {
-		return imageRecetteRepository.findById(IdImageEtape).get();
+	public ImageRecette getImageRecetteByID(Long id_image_recette) {
+		return imageRecetteRepository.findById(id_image_recette).get();
 	}
 	// Delete une image recette
 	

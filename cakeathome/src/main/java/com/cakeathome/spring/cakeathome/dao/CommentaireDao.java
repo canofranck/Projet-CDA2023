@@ -27,8 +27,8 @@ public class CommentaireDao {
 	}
 
 	// recupere un utilisateur par ID 
-	public Commentaire getCommentaireByID(Long IdUtilisateurCommentaire) {
-		return commentaireRepository.findById(IdUtilisateurCommentaire).get();
+	public Commentaire getCommentaireByID(Long id_commentaire) {
+		return commentaireRepository.findById(id_commentaire).get();
 	}
 	// Delete un Utilisateur
 	
